@@ -1,14 +1,23 @@
 import styles from "../styles/Home.module.css";
 
-export function getStaticProps() {
+import supabase from "../lib/supabase";
+
+export async function getStaticProps() {
+  const { data: posts, error } = await supabase.from("posts").select("*");
+
+  if (error) {
+    throw new Error(error);
+  }
+
   return {
     props: {
-      posts: [],
+      posts,
     },
   };
 }
 
 export default function Home({ posts }) {
+  console.log(supabase.auth.user());
   return (
     <div className={styles.container}>
       <h1>Howdy Ya'll</h1>

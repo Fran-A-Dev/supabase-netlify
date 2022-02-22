@@ -20,7 +20,7 @@ export default function Home({ posts }) {
   console.log(supabase.auth.user());
   return (
     <div className={styles.container}>
-      <h1>Howdy Ya'll</h1>
+      <h1>Howdy Ya&#39;ll</h1>
       <pre>{JSON.stringify(posts, null, 2)}</pre>
     </div>
   );
